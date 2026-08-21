@@ -13,8 +13,6 @@ if errorlevel 1 exit 1
 
 copy include\cutensor.h %LIBRARY_INC%\
 if errorlevel 1 exit 1
-copy include\cutensorMg.h %LIBRARY_INC%\
-if errorlevel 1 exit 1
 mkdir %LIBRARY_INC%\cutensor
 if errorlevel 1 exit 1
 copy include\cutensor\types.h %LIBRARY_INC%\cutensor\
