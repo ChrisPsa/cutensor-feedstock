@@ -15,9 +15,10 @@ Documentation: https://docs.nvidia.com/cuda/cutensor/index.html
 
 The cuTENSOR Library is a first-of-its-kind GPU-accelerated tensor linear
 algebra library providing tensor contraction, reduction and elementwise
-operations. cuTENSOR is used to accelerate applications in the areas of
-deep learning training and inference, computer vision, quantum chemistry
-and computational physics.
+operations. On Linux, the package also provides cuTENSORMp for distributed
+tensor contractions across multiple processes. cuTENSOR is used to
+accelerate applications in the areas of deep learning training and
+inference, computer vision, quantum chemistry and computational physics.
 
 License Agreements:- The packages are governed by the NVIDIA cuTENSOR
 Software License Agreement (EULA). By downloading and using the packages,
