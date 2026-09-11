@@ -1,4 +1,4 @@
-{% set version = "2.7.0.5" %}
+{% set version = "2.8.0.6" %}
 
 {% set cuda_major = 0 %}  # [not cuda_compiler_version or cuda_compiler_version == "None"]
 {% set cuda_major = (cuda_compiler_version or "12.0").split(".")[0] | int %}  # [cuda_compiler_version and cuda_compiler_version != "None"]
@@ -9,12 +9,12 @@
 {% set extension = "tar.xz" %}  # [not win]
 {% set extension = "zip" %}  # [win]
 
-{% set sha = "1540c437f4e18327731145e952daad24041be5bd7152bfef6c7c93cf8d69e7ed" %}  # [linux64 and (cuda_compiler_version or "").startswith("12")]
-{% set sha = "056eb7234e6f79e7424bb14eb7333325ed6e294cc1128698c7030a6979835908" %}  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
-{% set sha = "4dad09693f978ae15927d395eb228e288fa59732597f7c42f8a44321bcf71cc7" %}  # [win64 and (cuda_compiler_version or "").startswith("12")]
-{% set sha = "8f15c8094075bda122d41e0d1e7a53d73fc9555524862d171046178a24340cd4" %}  # [linux64 and (cuda_compiler_version or "").startswith("13")]
-{% set sha = "d81acd749552214ebaef3606bdd41f7c373b8c3ff9524cc7050a728372777952" %}  # [aarch64 and (cuda_compiler_version or "").startswith("13")]
-{% set sha = "84549d31acb88cdee1c3f307e662285fafa4e5ab0cbcf2d29bf8587d9f9a301f" %}  # [win64 and (cuda_compiler_version or "").startswith("13")]
+{% set sha = "a265120c0e64723e9f43aa03ca51af55126d0f8266c256e003ced8340f7fa966" %}  # [linux64 and (cuda_compiler_version or "").startswith("12")]
+{% set sha = "b9c391c8e9c4752f03b37b8c57058ac513a477f5388d708743ed46222355f849" %}  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
+{% set sha = "735b4c187fb03940d877ee930a72445a51c856572a7965951fd3b4a855baafa0" %}  # [win64 and (cuda_compiler_version or "").startswith("12")]
+{% set sha = "2a1a37e4c030b779748ea2f4cda3c283ea5613f7ed9f24d03adf524c7455f98e" %}  # [linux64 and (cuda_compiler_version or "").startswith("13")]
+{% set sha = "cbe3069e9776c2b4421f5d13c01011352a16929caad3b1eaf74839ee91e6768e" %}  # [aarch64 and (cuda_compiler_version or "").startswith("13")]
+{% set sha = "243faec3eb504adeba4531457a94fbf0d041c92e024d0ca38ad73856676f330b" %}  # [win64 and (cuda_compiler_version or "").startswith("13")]
 
 package:
   name: cutensor
@@ -25,7 +25,7 @@ source:
   sha256: {{ sha|default("") }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [cuda_compiler_version in (undefined, "None")]
   run_exports:
     - {{ pin_subpackage('cutensor') }}

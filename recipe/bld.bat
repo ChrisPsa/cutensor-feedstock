@@ -13,13 +13,11 @@ if errorlevel 1 exit 1
 
 copy include\cutensor.h %LIBRARY_INC%\
 if errorlevel 1 exit 1
-copy include\cutensorMg.h %LIBRARY_INC%\
-if errorlevel 1 exit 1
 mkdir %LIBRARY_INC%\cutensor
 if errorlevel 1 exit 1
 copy include\cutensor\types.h %LIBRARY_INC%\cutensor\
 if errorlevel 1 exit 1
-copy bin\*.dll %LIBRARY_BIN%\
+copy bin\cutensor.dll %LIBRARY_BIN%\
 if errorlevel 1 exit 1
-copy lib\*.lib %LIBRARY_LIB%\
+copy lib\cutensor.lib %LIBRARY_LIB%\
 if errorlevel 1 exit 1
