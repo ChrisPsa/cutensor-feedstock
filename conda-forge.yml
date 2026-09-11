@@ -20,3 +20,11 @@ workflow_settings:
     - provider: azure
       platform: win_64
       value: C:\Miniforge
+bot:
+  automerge: migration
+  version_updates:
+    nvidia:
+      compute_subdir: cutensor
+      json_name: libcutensor
+    sources:
+      - nvidia
