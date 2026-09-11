@@ -65,6 +65,8 @@ test:
     - {{ stdlib('c') }}
     # need the libcuda stub for import test
     - cuda-driver-dev  # [linux]
+    # NVIDIA's cuTENSORMp sample includes cuda_profiler_api.h
+    - cuda-profiler-api  # [linux]
     # NVIDIA's cuTENSORMp sample uses MPI to initialize the NCCL communicator
     - openmpi  # [linux]
   files:
