@@ -2,10 +2,12 @@
 set -ex
 
 test -f $PREFIX/include/cutensor.h
+test -f $PREFIX/include/cutensorMg.h
 test -f $PREFIX/include/cutensor/types.h
 test -f $PREFIX/include/cutensorMp.h
 test -f $PREFIX/include/cutensorMp/types.h
 test -f $PREFIX/lib/libcutensor.so
+test -f $PREFIX/lib/libcutensorMg.so
 test -f $PREFIX/lib/libcutensorMp.so
 
 ${GCC} test_load_elf.c -std=c99 -Werror -ldl -o test_load_elf
@@ -13,6 +15,7 @@ ${GCC} test_load_elf.c -std=c99 -Werror -ldl -o test_load_elf
 export CUDA_STUB="$PREFIX/lib/stubs/libcuda.so"
 
 LD_PRELOAD="$CUDA_STUB" ./test_load_elf $PREFIX/lib/libcutensor.so
+LD_PRELOAD="$CUDA_STUB" ./test_load_elf $PREFIX/lib/libcutensorMg.so
 LD_PRELOAD="$CUDA_STUB" ./test_load_elf $PREFIX/lib/libcutensorMp.so
 
 NVCC_FLAGS=""
@@ -22,6 +25,9 @@ cd sample_linux/cuTENSOR/
 error_log=$(nvcc $NVCC_FLAGS --std=c++17 -I$PREFIX/include -L$PREFIX/lib -lcutensor -lcudart contraction.cu -o contraction 2>&1)
 echo $error_log
 error_log=$(nvcc $NVCC_FLAGS --std=c++17 -I$PREFIX/include -L$PREFIX/lib -lcutensor -lcudart reduction.cu -o reduction 2>&1)
+echo $error_log
+cd ../cuTENSORMg/
+error_log=$(nvcc $NVCC_FLAGS --std=c++17 -I$PREFIX/include -L$PREFIX/lib -lcutensorMg -lcutensor -lcudart contraction_multi_gpu.cu -o contraction_multi_gpu 2>&1)
 echo $error_log
 cd ../cuTENSORMp/
 error_log=$(nvcc $NVCC_FLAGS --std=c++17 -I$PREFIX/include cutensorMp_contraction.cu -L$PREFIX/lib -lcutensorMp -lcutensor -lnccl -lmpi -lcudart -o cutensorMp_contraction 2>&1)
